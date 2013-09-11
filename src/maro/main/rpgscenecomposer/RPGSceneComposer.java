@@ -4,10 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
-import java.beans.PropertyChangeListener;
 
 import javax.swing.AbstractAction;
-import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -17,56 +15,21 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
 
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import maro.main.rpgscenecomposer.actions.ActionNew;
 import maro.main.rpgscenecomposer.components.ButtonTab;
 
 @EqualsAndHashCode
 public class RPGSceneComposer extends JFrame {
 
-
-	
+	@Setter
 	private JTabbedPane tabPane;
 	private JFileChooser chooser;
 	
-	public static void main(String[] args) {
-		try {
-		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-		    	System.out.println(info.getName());
-		    }
-		} catch (Exception e) {
-		    // If Nimbus is not available, you can set the GUI to another look and feel.
-		}
-
-		
-		try {
-			UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
-//			UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (UnsupportedLookAndFeelException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		RPGSceneComposer composer = new RPGSceneComposer("RPG - Scene Composer");
-
-	}
-	
-	public RPGSceneComposer(String title) {
-		super (title);
+	public RPGSceneComposer() {
 		chooser = new JFileChooser();
-		this.setMinimumSize(new Dimension(800, 600));;
 		
 		ImageIcon img = new ImageIcon(Toolkit.getDefaultToolkit().getImage(
 				ClassLoader.getSystemResource("resources/img/logo.png")));
@@ -106,6 +69,10 @@ public class RPGSceneComposer extends JFrame {
 		}));
 		mb.add(menuFile);
 		this.setJMenuBar(mb);
+	}
+	
+	public void init() {
+		pack();
 		this.setVisible(true);
 	}
 

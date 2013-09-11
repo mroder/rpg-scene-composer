@@ -3,10 +3,16 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="mainFrame" class="maro.main.rpgscenecomposer.RPGSceneComposer" >
-		<constructor-arg>
-			<value>Hallo</value>
-		</constructor-arg>
+	<bean id="mainFrame" class="maro.main.rpgscenecomposer.RPGSceneComposer" init-method="init" >
+		<property name="title">
+			<value>RPG Scene Composer</value>
+		</property>
+		<property name="minimumSize">
+			<bean class="java.awt.Dimension">
+				<constructor-arg value="800"></constructor-arg>
+				<constructor-arg value="600"></constructor-arg>
+			</bean>
+		</property>
 	</bean>
 
 </beans>
